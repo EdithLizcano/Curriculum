@@ -8,7 +8,7 @@ return(
     <>
         <Header></Header>
         <Box sx={{overflow:"auto", height:"80vh"}}>
-            <Body></Body>
+           
             
         </Box>
         <Footer></Footer>

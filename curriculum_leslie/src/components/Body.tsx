@@ -1,9 +1,12 @@
 import { Grid } from "@mui/material";
 
-export function Body(){
+export const Body =(
+    {apellido,persona}:{apellido:string;persona:string}
+)=>{
+    
     return(
-    <Grid width={"100%"} height={"180vh"} bgcolor={"blueviolet"}>
-hola perrillos como andasn xdxdxd
+    <Grid width={"100%"} height={"100vh"} bgcolor={"blueviolet"}>
+       {persona + " "+ apellido}
     </Grid>
     )
 }
