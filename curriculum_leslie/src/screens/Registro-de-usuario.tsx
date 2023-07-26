@@ -32,14 +32,28 @@ export function Guardar() {
 //     console.log(nombre);
     
 //    }
+
+    let valor=false;
+
+    function validar(cadena:string){
+        
+        setNombre(cadena);
+    }
     return (
        
         <Grid container sx={{ backgroundColor: '#c4dfe2', justifyContent: "center", alignItems: "flex-end",width:"100vw",height:"100vh",display:"flex" }} >
             {/* espacio con bgc blanco */}
             <Grid container item sx={{ backgroundColor: '#e7e2e2' }} height={"98%"} lg={6} md={8} xs={10} justifyContent={'center'} alignItems={"center"}>
                 {/* items dentro de lo blanco */}
-                <Grid item lg={10}>
-                    <TextField value={nombre}  onChange={(event)=>{setNombre(event.target.value);}} fullWidth label="Nombre" variant="outlined" />
+               
+               {
+
+               valor?"verdadero":null
+               
+
+               } 
+                <Grid item lg={10} >
+                    <TextField value={nombre}  onChange={(event)=>{validar(event.target.value)}} fullWidth label="Nombre" variant="outlined" />
                 </Grid>
 
                 <Grid item lg={10}>
