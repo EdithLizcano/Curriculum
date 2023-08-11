@@ -1,7 +1,9 @@
-import { Box, FormControl, FormLabel, Grid, Paper, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, FormLabel, Grid, Paper, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { ModalInfoUsuario } from "../components/ModalInfoUsuario";
 
-interface IUsuario{
+export interface IUsuario{
+    nombre:string;
     aPaterno:string;
     aMaterno:string;
     email:string;
@@ -9,36 +11,19 @@ interface IUsuario{
 }
 
 export function Guardar() {
-   const [nombre,setNombre]=useState('4');
-  
 
    const [usuario,setUsuario]=useState<IUsuario>(
     {
-        aPaterno:'1',
-        aMaterno:'2',
-        email:'3',
-        telefono:'',
+        nombre:'Leslie Edith',
+        aPaterno:'Lucio',
+        aMaterno:'Lizcano',
+        email:'less_blue@gmail.com',
+        telefono:'8125692627',
     }
    );
-   useEffect(()=>{
-        console.log('.');
-        
-   },[nombre])
-
-//    function setNombre(evento:any){
-//     console.log(evento.nativeEvent.data);
     
-//     nombre=nombre+evento.nativeEvent.data
-//     console.log(nombre);
-    
-//    }
+    const [cambio,setCambio]=useState(false)
 
-    let valor=false;
-
-    function validar(cadena:string){
-        
-        setNombre(cadena);
-    }
     return (
        
         <Grid container sx={{ backgroundColor: '#c4dfe2', justifyContent: "center", alignItems: "flex-end",width:"100vw",height:"100vh",display:"flex" }} >
@@ -46,14 +31,8 @@ export function Guardar() {
             <Grid container item sx={{ backgroundColor: '#e7e2e2' }} height={"98%"} lg={6} md={8} xs={10} justifyContent={'center'} alignItems={"center"}>
                 {/* items dentro de lo blanco */}
                
-               {
-
-               valor?"verdadero":null
-               
-
-               } 
                 <Grid item lg={10} >
-                    <TextField value={nombre}  onChange={(event)=>{validar(event.target.value)}} fullWidth label="Nombre" variant="outlined" />
+                    <TextField value={usuario.nombre}  onChange={(event)=>{}} fullWidth label="Nombre" variant="outlined" />
                 </Grid>
 
                 <Grid item lg={10}>
@@ -96,7 +75,12 @@ export function Guardar() {
                             <TextField label="Año" variant="outlined" />
                         </Grid>
                 </Grid>
+                <Grid container item lg={10} justifyContent={'space-between'} >
+                        <Button onClick={()=>{setCambio(true)}}>Abrir</Button>
+                </Grid>
             </Grid>
+            {cambio ? <ModalInfoUsuario cerrar={setCambio} datosUsuario={usuario}/> :''}
+            
         </Grid>
-    );
+    )
 }
